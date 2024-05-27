@@ -1,4 +1,4 @@
-.player-add {
+.coach-add {
     width: 80%;
     margin: auto;
     font-family: Arial, sans-serif;
@@ -28,7 +28,6 @@
     margin-top: 20px;
     display: flex;
     justify-content: flex-end;
-    text-align: left;
   }
   
   .buttons button {

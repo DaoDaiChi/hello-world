@@ -46,9 +46,16 @@ const PlayerAdd = ({ ageLimit }) => {
       setError(`Độ tuổi giới hạn là ${ageLimit} tuổi.`);
       return;
     }
-
-    if (Object.values(formData).every(value => value.trim() !== '')) {
-      setEntries([...entries, { ...formData, id: Date.now() }]);
+  
+    // Trim whitespace from all form data fields before validation
+    const trimmedFormData = {};
+    for (const key in formData) {
+      trimmedFormData[key] = formData[key].trim();
+    }
+  
+    // Check if any field is empty after trimming
+    if (Object.values(trimmedFormData).every(value => value !== '')) {
+      setEntries([...entries, { ...trimmedFormData, id: Date.now() }]);
       setFormData({
         clubName: '',
         seaSon: '',
@@ -64,8 +71,10 @@ const PlayerAdd = ({ ageLimit }) => {
         status: ''
       });
       setError('');
+      // Alert for successful addition
+      alert("Cầu thủ đã được thêm thành công!");
     } else {
-      alert("Please fill in all fields");
+      alert("Vui lòng điền đầy đủ thông tin cầu thủ.");
     }
   };
 
@@ -211,7 +220,9 @@ const PlayerAdd = ({ ageLimit }) => {
         </select>
       </div>
       {error && <div className="error-message">{error}</div>}
-      <button onClick={handleConfirm}>Xác nhận</button>
+      <div className="buttons">
+        <button onClick={handleConfirm}>Xác nhận</button>
+      </div>
 
       <div className="entry-list">
         <h3>Danh sách cầu thủ:</h3>

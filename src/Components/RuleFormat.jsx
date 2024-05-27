@@ -58,7 +58,7 @@ const RuleFormat = ({ onAgeLimitChange }) => {
             onChange={handleChange}
             className="p-2 flex-1 border border-gray-300 rounded"
           />
-          <button onClick={() => handleConfirm('maxAge')} className="confirm-btn">
+          <button onClick={() => handleConfirm('maxAge')} className="confirm-btn" style={{padding:'8px'}}>
             Xác nhận
           </button>
         </div>
